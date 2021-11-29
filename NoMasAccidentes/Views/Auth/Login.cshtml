@@ -1,0 +1,21 @@
+﻿@model NoMasAccidentesNegocio.Usuario
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Ingresa Tus Credenciales</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(u => u.Email)
+    @Html.TextBoxFor(u => u.Email, new { type="email"})
+    <br />
+    @Html.LabelFor(u=>u.Password, "Contraseña")
+    @Html.PasswordFor(u=>u.Password)
+    <br />
+
+    <button>Ingresar</button>
+
+}
+<br />
+@TempData["mensaje"]

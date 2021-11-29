@@ -24,16 +24,30 @@
                
             </div>
             <div class="navbar-collapse collapse">
-                <div class="container-ul">
+                
                     <ul class="nav navbar-nav">
-                        Listar Contrato
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                @Html.ActionLink("Cerrar Sesion", "LogOut", "Auth")
+                            </li>
+                            <li>
+                                <div style="position: relative;display: block;padding: 15px 15px;color:white">@User.Identity.Name</div>
+
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.ActionLink("Iniciar Sesion", "Login", "Auth")
+                            </li>
+                        }
+
                     </ul>
-                    <ul class="nav navbar-nav">
-                        Agregar Contrato
-                    </ul>
+             
                 </div>
                
-            </div>
+           
         </div>
     </div>
 

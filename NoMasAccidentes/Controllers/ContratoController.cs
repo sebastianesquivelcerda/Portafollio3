@@ -7,7 +7,8 @@ using NoMasAccidentesNegocio;
 
 
 namespace NoMasAccidentes.Controllers
-{
+{   
+    [Authorize]
     public class ContratoController : Controller
     {
         // GET: Contrato
@@ -26,16 +27,22 @@ namespace NoMasAccidentes.Controllers
         // GET: Contrato/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
         // POST: Contrato/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "fecha_Creacion,rut,fecha_Termino,,texto_contrato")]Contrato contrato)
+        public ActionResult Create([Bind(Include = "fecha_Creacion,empresa_rut,fecha_Termino,,texto_contrato")]Contrato contrato)
         {
             try
             {
                 // TODO: Add insert logic here
+                if ( !ModelState.IsValid)
+                {
+                    
+                    return View(contrato);
+                }
                 contrato.Save();
                 TempData["mensaje"] = "Guardado Correctamente";
                 return RedirectToAction("Index");
@@ -63,7 +70,7 @@ namespace NoMasAccidentes.Controllers
 
         // POST: Contrato/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID_Contrato,fecha_Creacion,rut,fecha_Termino,,texto_contrato ")]Contrato contrato)
+        public ActionResult Edit([Bind(Include = "ID_Contrato,fecha_Creacion, empresa_rut, fecha_Termino,, texto_contrato")]Contrato contrato)
         {
             try
             {

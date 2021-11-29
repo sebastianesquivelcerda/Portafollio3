@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,18 @@ namespace NoMasAccidentesNegocio
 {
    public class Contrato
     {
+       
         public int id_Contrato { get; set; }
+       
         public DateTime fecha_Creacion_Contrato { get; set; }
-        public string empresa_Rut { get; set; }
+     
+        public string empresa_Rut { get; set; } [Required]
+       
+
         public DateTime fecha_Termino_Contrato { get; set; }
+      
         public string texto_Contrato { get; set; }
+   
 
         NoMasAccidentesEntitites db = new NoMasAccidentesEntitites();
 
