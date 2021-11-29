@@ -1,0 +1,42 @@
+﻿@using NoMasAccidentesNegocio
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Contratos</h2>
+
+@{List<Contrato> contratos = (List<Contrato>)ViewBag.contratos;}
+@Html.ActionLink("Crear contrato", "Create")
+<table>
+        <tr>
+            <th>id_contrato</th>
+            <th>fecha_Creacion_Contrato</th>
+            <th>empresa_Rut</th>
+            <th>fecha_Termino_Contrato</th>
+            <th>texto_Contrato</th>
+            <th>Opciones</th>
+        </tr>
+            @foreach (var contrato in contratos)
+            {
+        <tr>
+            <td>@contrato.id_Contrato</td>
+            <td>@contrato.fecha_Creacion_Contrato</td>
+            <td>@contrato.empresa_Rut</td>
+            <td>@contrato.fecha_Termino_Contrato</td>
+            <td>@contrato.texto_Contrato</td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete", new { id = contrato.id_Contrato })
+                @Html.ActionLink("Modificar", "Edit", new { id = contrato.id_Contrato })
+
+            </td>
+        </tr>
+            }
+
+        
+</table>
+
+@TempData["mensaje"]
+
+

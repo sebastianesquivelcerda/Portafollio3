@@ -1,0 +1,24 @@
+﻿@model NoMasAccidentesNegocio.Contrato
+@{
+    ViewBag.Title = "Modificar Contrato";
+}
+
+<h2>Editar Datos del Contrato</h2>
+@Html.ActionLink("Modificar Datos del Contrato", "index")
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p=>p.id_Contrato)
+    @Html.LabelFor(p => p.fecha_Creacion_Contrato)
+    @Html.TextBoxFor(p => p.fecha_Creacion_Contrato)
+    <br />
+    @Html.LabelFor(p => p.empresa_Rut)
+    @Html.TextBoxFor(p => p.empresa_Rut)
+    <br />
+    @Html.LabelFor(p => p.fecha_Termino_Contrato)
+    @Html.TextBoxFor(p => p.fecha_Termino_Contrato)
+    <br />
+    @Html.LabelFor(p => p.texto_Contrato)
+    @Html.TextBoxFor(p => p.texto_Contrato)
+    <br />
+    <button>Modificar</button>
+}
